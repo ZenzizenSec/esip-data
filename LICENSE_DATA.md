@@ -111,7 +111,7 @@ Automated scraping of the ESIP website CVE query tool beyond reasonable personal
 
 When You use, display, embed, or publish Licensed Data or derivatives in any context accessible to others, You must include the following Attribution:
 
-> Data provided by ESIP / ZenzizenSec — [www.zenzizensec.com](https://www.zenzizensec.com)
+> Data provided by ESIP / ZenzizenSec — [www.exposuresignal.io](https://www.exposuresignal.io)
 
 **Where Attribution must appear:**
 - In the user interface where ESIP data is displayed, if any
@@ -121,7 +121,7 @@ When You use, display, embed, or publish Licensed Data or derivatives in any con
 
 **Attribution format:**
 - Both the text credit and the link are required
-- The link must point to www.zenzizensec.com or a ZenzizenSec-operated page
+- The link must point to www.exposuresignal.io or a ZenzizenSec-operated page
 - Attribution must be reasonably visible. It may not be hidden in a font size materially smaller than surrounding text or placed where a reasonable reader would not encounter it
 
 **Upstream source attribution:**
@@ -186,7 +186,7 @@ ZenzizenSec reserves the right to throttle, suspend, or block access to the free
 
 ## 9. Data Retention and Historical Data
 
-The GitHub daily snapshot reflects current state at the time of each publication cycle. It is overwritten with each publication. It is not a cumulative historical archive. Consumers who require historical data must maintain their own archives by pulling the snapshot on their own schedule at their own infrastructure cost. ZenzizenSec is not responsible for data consumers fail to retrieve.
+The GitHub daily snapshot is published as a single replaceable release asset, `ESIP-daily.json`, attached to a rolling `daily-latest` release on the public ESIP data repository. The asset is overwritten in place with each publication cycle. The repository does not retain a commit history of the data file. The only addressable copy of the data is the current asset; prior cycles are not preserved on the publication surface. Consumers who require historical data must maintain their own archives by pulling the snapshot on their own schedule at their own infrastructure cost. ZenzizenSec is not responsible for data consumers fail to retrieve.
 
 ZenzizenSec reserves the right to retain or remove any version of the Licensed Data at its sole discretion, and to move any data element from the free tier to the commercial tier or withdraw it from publication entirely. Best efforts will be made to communicate material changes through the channels in Section 7 in advance, but no minimum notice period is guaranteed.
 

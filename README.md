@@ -105,23 +105,40 @@ Page size is fixed at 100. Both endpoints return the same
 
 ```json
 {
-  "snapshot_generated_at": "2026-06-18T03:00:00Z",
+  "snapshot_generated_at": "2026-06-19T03:00:00Z",
   "schema_version": "1.0",
-  "cve_count": 27074,
+  "cve_count": 27086,
   "dataset_scope": "signal_set_only",
   "dataset_type": "public_snapshot",
   "record_definition": "CVE with at least one observable signal",
-  "attribution": "Data provided by ESIP / ZenzizenSec ...",
+  "attribution": "Data provided by ESIP / ZenzizenSec — www.exposuresignal.io",
   "license_url": "https://github.com/zenzizensec/esip-data/blob/main/LICENSE_DATA.md",
   "data": [
     {
       "cve_id": "CVE-2023-22527",
       "exposure_class_id": "CVE-2023-22527",
       "attack_techniques": [
-        { "technique_id": "T1190", "technique_name": "...", "mapping_confidence": "high", "mapping_source": "esip" }
+        { "technique_id": "T1190", "technique_name": "Exploit Public-Facing Application" }
       ],
       "observation_events": [
-        { "observation_type": "kev_inclusion", "source_name": "CISA Known Exploited Vulnerabilities", "observed_at": "2026-04-30T18:58:53.831062Z" }
+        {
+          "observation_type": "kev_inclusion",
+          "source_name": "CISA Known Exploited Vulnerabilities",
+          "observed_date": "2024-01-22",
+          "reference_id": null,
+          "kev_context": {
+            "known_ransomware_campaign_use": true,
+            "required_action": "Apply mitigations per vendor instructions.",
+            "due_date": "2024-02-05"
+          }
+        },
+        {
+          "observation_type": "exploit_reference",
+          "source_name": "ExploitDB",
+          "observed_date": "2024-01-23",
+          "reference_id": "51884",
+          "kev_context": null
+        }
       ],
       "detection_capability": null
     }
@@ -133,10 +150,17 @@ The dataset includes only CVEs with at least one observable signal
 (KEV inclusion, public PoC, exploit module reference, etc.). It is
 intentionally narrower than the full CVE corpus.
 
-The full field reference, enumerations (allowed values for
-`observation_type`, supported `source_name` values, `mapping_confidence`
-levels, etc.), and the data-publication boundary documentation (what
-ships, what is intentionally stripped, and why) live at
+Each `observation_events[]` entry has five fields:
+
+- `observation_type` — `kev_inclusion`, `exploit_reference`, or `patch_available`.
+- `source_name` — mapped display string for an allowlisted source (`CISA Known Exploited Vulnerabilities`, `ENISA EUVD Exploited Vulnerabilities`, `ExploitDB`, `Metasploit Framework Modules`, `GitHub PoC Repositories`) OR `null` for sources outside the allowlist.
+- `observed_date` — UTC date (`YYYY-MM-DD`) on which ESIP first confirmed the observation from that source.
+- `reference_id` — source-record identifier (ExploitDB entry ID, GitHub PoC repo URL, Metasploit module path) when known and the source is allowlisted; `null` otherwise.
+- `kev_context` — non-null only on CISA KEV observations. Carries `known_ransomware_campaign_use` (`true` / `false` / `null` — CISA's `Known` / `Unknown` / absent transformed for consumer-friendly predicates), `required_action`, `due_date`.
+
+The full field reference, enumerations, and the data-publication
+boundary documentation (what ships, what is intentionally stripped,
+and why) live at
 [exposuresignal.io/docs](https://www.exposuresignal.io/docs/).
 
 ---
