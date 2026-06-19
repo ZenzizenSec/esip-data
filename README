@@ -1,7 +1,0 @@
-# ESIP Free Data Feed
-
-The ESIP Free Data Feed publishes the current state of publicly observable exposure signals collected by the Exposure Signal Intelligence Platform (ESIP).
-
-This repository intentionally contains only the current signal snapshot and supporting schema documentation.
-
-Historical signal evolution, Temporal Context, Compound Risk analysis, and Exposure Decision Support capabilities are available through the commercial ESIP platform.
